@@ -36,7 +36,7 @@ if "loaded" not in st.session_state:
 def initialize():
     query_engine_tools = []
 
-        def build_tools_text(tools) -> str:
+    def build_tools_text(tools) -> str:
         tools_dict = {}
         for tool in tools:
             tools_dict[tool.name] = tool.description
