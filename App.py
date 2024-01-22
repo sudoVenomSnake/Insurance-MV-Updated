@@ -156,4 +156,5 @@ if "agent" in st.session_state:
     query = st.text_input(label = "Please enter your query -")
     if query:
         with rd.stdout as out:
-            st.session_state.agent.query(query)
+            response = st.session_state.agent.query(query)
+        st.markdown(response)
