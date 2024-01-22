@@ -149,7 +149,7 @@ def initialize():
 if "agent" not in st.session_state:
     initialize()
 
-if "key" in st.session_state:
+if "agent" in st.session_state:
     st.title(st.session_state.title)
     for i, j in zip(st.session_state.index_files, st.session_state.summaries):
         st.subheader(i)
