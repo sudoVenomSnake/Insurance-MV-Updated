@@ -143,7 +143,7 @@ def initialize():
                 ),
             ),
         )]
-    st.session_state.agent = ReActAgent.from_tools(final_tool, llm = llm, verbose = True)
+    st.session_state.agent = ReActAgent.from_tools(final_tool, context = context, llm = llm, verbose = True)
     return True
 
 if "agent" not in st.session_state:
