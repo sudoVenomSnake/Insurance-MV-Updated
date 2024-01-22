@@ -133,7 +133,7 @@ def initialize():
             ),
         ))
     llm = OpenAI(model = st.session_state.model_choice)
-    query_engine = SubQuestionQueryEngine.from_defaults(query_engine_tools = query_engine_tools, verbose = True)
+    query_engine = SubQuestionQueryEngine.from_defaults(question_gen = question_gen, query_engine_tools = query_engine_tools, verbose = True)
     final_tool = [QueryEngineTool(
             query_engine = query_engine,
             metadata = ToolMetadata(
@@ -147,6 +147,7 @@ def initialize():
     return True
 
 if "agent" not in st.session_state:
+    st.write("Initializing...")
     initialize()
 
 if "agent" in st.session_state:
