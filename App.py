@@ -146,11 +146,9 @@ def initialize():
     st.session_state.agent = ReActAgent.from_tools(final_tool, llm = llm, verbose = True)
     return True
 
-if "agent" not in st.session_state:
-    initialize()
-
-if "key" in st.session_state and "agent" in st.session_state:
+if "key" in st.session_state:
     st.title(st.session_state.title)
+    initialize()
     for i, j in zip(st.session_state.index_files, st.session_state.summaries):
         st.subheader(i)
         st.write(j)
