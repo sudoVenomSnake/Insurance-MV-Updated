@@ -21,7 +21,7 @@ st.session_state.key = st.secrets["OPENAI_API_KEY"]
 if "key" not in st.session_state:
     os.environ["OPENAI_API_KEY"] = st.text_input(label = "Please enter your OpenAI key")
     if os.environ["OPENAI_API_KEY"]:
-        st.session_state.key = True
+        st.session_state.key = os.environ["OPENAI_API_KEY"]
 
 if "loaded" not in st.session_state:
     with open("template.json", "r") as f:
@@ -31,8 +31,7 @@ if "loaded" not in st.session_state:
     st.session_state.summaries = template["summaries"]
     st.session_state.model_choice = template["model_choice"]
     st.session_state.loaded = True
-    
-@st.cache_resource
+
 def initialize():
     query_engine_tools = []
 
@@ -144,10 +143,9 @@ def initialize():
             ),
         )]
     st.session_state.agent = ReActAgent.from_tools(final_tool, context = context, llm = llm, verbose = True)
-    return True
+    return
 
 if "agent" not in st.session_state:
-    st.write("Initializing...")
     initialize()
 
 if "agent" in st.session_state:
