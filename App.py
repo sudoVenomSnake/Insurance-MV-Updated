@@ -117,7 +117,7 @@ def initialize():
     """
 
     subquestion_template = convert_to_handlebars(PREFIX + EXAMPLES + SUFFIX)
-    question_gen = GuidanceQuestionGenerator.from_defaults(prompt_template_str = subquestion_template, guidance_llm = GuidanceOpenAI("gpt-4o"), verbose = False)
+    question_gen = GuidanceQuestionGenerator.from_defaults(prompt_template_str = subquestion_template, guidance_llm = GuidanceOpenAI("gpt-4"), verbose = False)
 
     context = """You are a seasoned insurance attorney AI agent, specializing in the complex landscape of healthcare insurance in the Indian context. You have acess to a tool, which you will use to formulate answers, when given queries. Use the context given in these answers to formulate your final answer, make sure you cite well with statutes et cetera."""
     for i, j in zip(st.session_state.index_files, st.session_state.summaries):
